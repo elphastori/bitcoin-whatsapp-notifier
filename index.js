@@ -1,8 +1,11 @@
 const axios = require("axios");
 
-const accountSid = "AC9de9cb9ae046a09717525d23d1b3eae7";
-const authToken = "6ba03c17c8883deeec04ea57d0f96f59";
+const accountSid = process.env.ACCOUNT_SID;
+const authToken = process.env.AUTH_TOKEN;
 const twilio = require('twilio')(accountSid, authToken);
+
+const fromNumber = process.env.FROM_NUMBER;
+const toNumber = process.env.TO_NUMBER;
 
 const express = require('express');
 const PORT = process.env.PORT || 5000;
@@ -24,9 +27,9 @@ const getBitcoinTicker = async () => {
 const sendWhatsappUpdate = async (ask, bid) => {
     try {
         const response = await twilio.messages.create({
-            from: "whatsapp:+14155238886",
+            from: `whatsapp:+${fromNumber}`,
             body: `Your appointment is coming up on ${ask} at to ${bid}`,
-            to: "whatsapp:+27608917254"});
+            to: `whatsapp:+${toNumber}`});
         console.log(response);
     } catch(error) {
         console.error(error);
