@@ -2,6 +2,7 @@
   "name": "bitcoin-whatsapp-notifier",
   "version": "1.0.0",
   "description": "Send whatsapp updates of bitcoin prices",
+  "repository": "https://github.com/elphastori/bitcoin-whatsapp-notifier",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "twilio": "^3.30.3"
   }
 }

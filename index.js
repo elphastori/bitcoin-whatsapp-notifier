@@ -4,6 +4,9 @@ const accountSid = "AC9de9cb9ae046a09717525d23d1b3eae7";
 const authToken = "6ba03c17c8883deeec04ea57d0f96f59";
 const twilio = require('twilio')(accountSid, authToken);
 
+const express = require('express');
+const PORT = process.env.PORT || 5000;
+
 const increment = 1000;
 let lastAsk = 0;
 let lastBid = 0;
@@ -49,3 +52,7 @@ const monitorBitcoin = async () => {
 }
 
 setInterval(monitorBitcoin, 60000);
+
+express()
+    .get('/', (req, res) => res.send(`Ask: ${lastAsk} Bid: ${lastBid}`))
+    .listen(PORT, () => console.log(`Bitcoin WhatsApp Notifier listening on port ${PORT}!`));
