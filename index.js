@@ -48,4 +48,4 @@ const monitorBitcoin = async () => {
     }
 }
 
-setInterval(monitorBitcoin, 10000);
+setInterval(monitorBitcoin, 60000);
